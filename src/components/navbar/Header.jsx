@@ -5,11 +5,10 @@ import {
   Layers, 
   Download, 
   Film, 
-  CheckCircle2, 
   SlidersHorizontal,
-  ChevronDown,
-  FileText,
-  Activity
+  Activity,
+  BookOpen,
+  Terminal
 } from 'lucide-react';
 
 export function Header({ 
@@ -20,7 +19,9 @@ export function Header({
   onOpenContinuity, 
   onOpenExport, 
   onOpenPitch, 
-  onOpenTheater 
+  onOpenTheater,
+  onOpenSpec,
+  onOpenInspector
 }) {
   return (
     <header className="glass-panel" style={{
@@ -60,7 +61,7 @@ export function Header({
             <span style={{ fontSize: '11px', color: '#8b5cf6', fontWeight: 600 }}>for HexCoded</span>
           </div>
           <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
-            Agentic Node Director & Continuity Canvas
+            Agentic Node Director & Continuity Suite
           </div>
         </div>
 
@@ -88,16 +89,48 @@ export function Header({
       </div>
 
       {/* Action Controls & Navigation */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        
+        {/* THE PRODUCT SPEC & PRD BUTTON - PROMINENT FOR JIVESH */}
+        <button 
+          onClick={onOpenSpec}
+          className="btn-secondary"
+          style={{ 
+            borderColor: 'rgba(139, 92, 246, 0.5)', 
+            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(59, 130, 246, 0.15) 100%)',
+            color: '#ffffff',
+            fontWeight: 700,
+            padding: '6px 14px',
+            fontSize: '12px',
+            boxShadow: '0 0 14px rgba(139, 92, 246, 0.3)'
+          }}
+          title="Read the Product Thesis, Persona, and Architecture PRD"
+        >
+          <BookOpen size={14} color="#c4b5fd" />
+          <span>Product Spec & PRD</span>
+          <span className="badge badge-purple" style={{ fontSize: '9px', padding: '1px 5px' }}>THINKING</span>
+        </button>
+
+        {/* Prompt Math Inspector */}
+        <button 
+          onClick={onOpenInspector}
+          className="btn-secondary"
+          title="Inspect DAG compiled token weights & ControlNet vectors"
+          style={{ padding: '6px 11px', fontSize: '12px' }}
+        >
+          <Terminal size={14} color="#a78bfa" />
+          <span>Prompt Math</span>
+        </button>
+
         {/* Continuity Matrix Badge */}
         <button 
           onClick={onOpenContinuity}
           className="btn-secondary"
           title="Inspect Character & Wardrobe Consistency"
-          style={{ padding: '6px 12px', fontSize: '12px' }}
+          style={{ padding: '6px 11px', fontSize: '12px' }}
         >
           <SlidersHorizontal size={14} color="#06b6d4" />
-          <span>Continuity Matrix</span>
+          <span>Continuity</span>
           <span className="badge badge-cyan" style={{ fontSize: '10px', padding: '1px 5px' }}>98.4%</span>
         </button>
 
@@ -106,10 +139,10 @@ export function Header({
           onClick={onOpenTheater}
           className="btn-secondary"
           title="Preview Full Sequence in Theater View"
-          style={{ padding: '6px 12px', fontSize: '12px' }}
+          style={{ padding: '6px 11px', fontSize: '12px' }}
         >
           <Film size={14} color="#f59e0b" />
-          <span>Theater Preview</span>
+          <span>CinemaScope</span>
         </button>
 
         {/* Export Modal */}
@@ -117,10 +150,10 @@ export function Header({
           onClick={onOpenExport}
           className="btn-secondary"
           title="Export ComfyUI Graph & HexCoded API Payload"
-          style={{ padding: '6px 12px', fontSize: '12px' }}
+          style={{ padding: '6px 11px', fontSize: '12px' }}
         >
           <Download size={14} color="#10b981" />
-          <span>Export Pipeline</span>
+          <span>Export</span>
         </button>
 
         {/* Pitch to HexCoded for Jivesh */}
@@ -128,15 +161,15 @@ export function Header({
           onClick={onOpenPitch}
           className="btn-secondary"
           style={{ 
-            borderColor: 'rgba(139, 92, 246, 0.4)', 
-            background: 'rgba(139, 92, 246, 0.1)',
-            color: '#c4b5fd',
-            padding: '6px 12px',
+            borderColor: 'rgba(255, 255, 255, 0.12)', 
+            background: 'rgba(255, 255, 255, 0.04)',
+            color: '#e2e8f0',
+            padding: '6px 11px',
             fontSize: '12px'
           }}
         >
-          <Sparkles size={14} color="#8b5cf6" />
-          <span>Pitch for Jivesh</span>
+          <Sparkles size={14} color="#f59e0b" />
+          <span>Outreach Pitch</span>
         </button>
 
         {/* Run Pipeline Button */}
@@ -145,7 +178,7 @@ export function Header({
           disabled={isRunning}
           className="btn-primary"
           style={{ 
-            padding: '7px 18px',
+            padding: '7px 16px',
             background: isRunning 
               ? 'linear-gradient(135deg, #10b981 0%, #059669 100%)' 
               : 'linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)',
@@ -155,12 +188,12 @@ export function Header({
           {isRunning ? (
             <>
               <Activity size={15} className="cable-pulse" />
-              <span>Synthesizing...</span>
+              <span>Rendering...</span>
             </>
           ) : (
             <>
               <Play size={14} fill="#ffffff" />
-              <span>Run Pipeline</span>
+              <span>Synthesize</span>
             </>
           )}
         </button>

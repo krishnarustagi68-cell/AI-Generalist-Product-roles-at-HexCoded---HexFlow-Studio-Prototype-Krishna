@@ -4,16 +4,14 @@ import {
   Sparkles, 
   Send, 
   Bot, 
-  User, 
   Terminal, 
   CheckCircle2, 
-  ArrowRight,
-  Maximize2,
-  ChevronRight,
+  ChevronRight, 
   ChevronLeft,
-  Wand2,
-  Sliders,
-  Film
+  Film,
+  Camera,
+  Compass,
+  AlertCircle
 } from 'lucide-react';
 
 export function AgenticDirectorChat({ 
@@ -27,8 +25,9 @@ export function AgenticDirectorChat({
     {
       id: 'm1',
       sender: 'agent',
-      text: "Welcome to HexFlow Director. I'm your agentic co-director. I can build entire scenes, lock character identity across shots, configure camera rigs, or optimize your generation graph for production. What are we filming?",
+      text: "I'm your DP & Co-Director engine. I don't just generate prompts—I enforce cinematic coverage, 180° eyeline continuity, key-to-fill lighting ratios, and focal length compression across your scene graph. Tell me what scene you're directing, or ask me to restructure the coverage.",
       actionsTaken: null,
+      dpNotes: 'Current Camera Axis: 35mm Anamorphic T1.9 • Kodak 500T Stock • Chiaroscuro 4:1',
       timestamp: 'Just now'
     }
   ]);
@@ -48,7 +47,6 @@ export function AgenticDirectorChat({
     const query = textToSend.trim();
     if (!query) return;
 
-    // Add user message
     const userMsg = {
       id: `u-${Date.now()}`,
       sender: 'user',
@@ -60,64 +58,70 @@ export function AgenticDirectorChat({
     setInputText('');
     setIsThinking(true);
 
-    // Simulate Agent Reasoning & Canvas Manipulation
     setTimeout(() => {
       let agentResponseText = '';
       let actions = [];
+      let dpNotes = '';
 
       const lower = query.toLowerCase();
 
       if (lower.includes('85mm') || lower.includes('close-up') || lower.includes('portrait')) {
-        agentResponseText = "Switching your camera setup to an 85mm T2.0 Prime with f/1.4 shallow depth of field. I've updated the optics node and added subtle creamy bokeh to emphasize the actor's intense gaze.";
+        agentResponseText = "Switching optics to an 85mm T2.0 Prime. Cinematographic Rationale: Cutting from the wide establishing shot to an 85mm compresses the background neon signage while generating an intimate f/1.4 creamy bokeh. This forces the viewer's psychological focus onto the actor's gaze. I've preserved the 180-degree axis so the eyeline stays locked toward the diner counter.";
+        dpNotes = "Coverage: Intimate Medium Close-Up • Bokeh: Elliptical Anamorphic • Eyeline: Left-to-Right Verified";
         actions = [
-          'Inspected active camera node (node-3)',
-          'Updated focalLength -> 85mm T2.0 Prime',
-          'Adjusted aperture -> f/1.4 Creamy Bokeh',
-          'Recalibrated depth-of-field blur profile'
+          'Evaluated spatial geometry relative to Shot 1',
+          'Swapped lens rig -> 85mm T2.0 Prime (f/1.4 DOF)',
+          'Recalibrated depth-of-field blur profile',
+          'Eyeline orientation confirmed on 180° line'
         ];
         onExecuteAgentAction('SWITCH_85MM');
       } else if (lower.includes('continuity') || lower.includes('lock') || lower.includes('character') || lower.includes('elena') || lower.includes('ren')) {
-        agentResponseText = "Character identity retention locked to 99%. I have bound the facial embedding LoRA and locked the wardrobe token across all downstream scene nodes to prevent shot-to-shot hallucination drift.";
+        agentResponseText = "Character identity retention locked to 99%. Cinematographic Rationale: Vanishing the character morphing flaw. I've bound the actor's facial embedding vectors directly to the IP-Adapter cross-attention layers and locked the wardrobe token seed to prevent button, lapel, and seam hallucinations across sequential cuts.";
+        dpNotes = "Facial Vector Variance: <0.02 • Wardrobe Token: Pinned to Latent Seed • Drift Status: Negligible";
         actions = [
-          'Extracted facial reference anchors',
-          'Enforced LoRA weight -> 0.99',
-          'Synchronized wardrobe token across all timeline shots',
-          'Continuity score verified: 99.4%'
+          'Pinned facial embedding vectors to cross-attention',
+          'Locked wardrobe token seed (#Noir-Coat-v2)',
+          'Synchronized latent identity across all DAG branches',
+          'Verified Continuity Matrix score: 99.4%'
         ];
         onExecuteAgentAction('LOCK_CONTINUITY');
       } else if (lower.includes('magnific') || lower.includes('upscale') || lower.includes('4k') || lower.includes('detail')) {
-        agentResponseText = "Attached a Magnific 4K Detail Pass node with 35% hallucination creativity and HDR relighting. Your render will now output rich skin micro-pores and sharp fabric textures.";
+        agentResponseText = "Injected Magnific 4K Hallucination Pass. Cinematographic Rationale: Vanilla video diffusion models over-smooth organic micro-textures like wet leather, rain streaks on glass, and skin pores. Magnific's regional relighting pass re-injects high-frequency specularity and fabric weave without altering facial bone geometry.";
+        dpNotes = "Upscale: 4x Cinema Master • Creativity: 35% • Structural Resemblance: 88% • HDR Relight: Active";
         actions = [
-          'Instantiated Magnific Enhancer node',
-          'Wired input from Color Grade node',
-          'Wired output to Master Render node',
-          'Enabled HDR Relighting pass'
+          'Instantiated Magnific Enhancer DAG node',
+          'Wired input stream from Color Grade node',
+          'Enabled HDR Relighting & Micro-porosity pass',
+          'Routed high-frequency pass into Master Render node'
         ];
         onExecuteAgentAction('ATTACH_MAGNIFIC');
       } else if (lower.includes('neo-noir') || lower.includes('rain') || lower.includes('cyberpunk') || lower.includes('diner')) {
-        agentResponseText = "Generating a 3-shot Neo-Noir sequence. I've established the Shinjuku diner setting, rigged the 35mm anamorphic camera with rain streaks, dialed in Kodak 500T grain, and connected the pipeline to our master render output.";
+        agentResponseText = "Assembled 3-shot Neo-Noir coverage following A24 film syntax: Establishing Exterior Wide (24mm rain reflections) -> Profile Medium Close-Up (35mm anamorphic) -> Tight Emotional Macro (85mm flame/cigarette). Graded in organic Kodak Vision3 500T with a high-contrast 4:1 chiaroscuro lighting ratio.";
+        dpNotes = "Coverage: 3-Angle Master Setup • Stock: Kodak 500T • Contrast: 4:1 Key:Fill • Aspect: 2.39:1 CinemaScope";
         actions = [
-          'Created ScriptSceneNode: The Wet Diner',
-          'Connected CharacterAnchor: Detective Ren',
-          'Configured CameraOpticsNode: 35mm Anamorphic T1.9',
-          'Applied ColorGradeNode: Kodak 500T / Neon Magenta-Cyan',
-          'Added ParticlePhysicsNode: Rain & Smoke'
+          'Constructed ScriptSceneNode: The Wet Diner',
+          'Anchored CharacterNode: Detective Ren (LoRA Lock)',
+          'Rigged CameraOptics: 35mm Anamorphic T1.9',
+          'Timed LightingGrade: Kodak 500T with 4:1 Key/Fill',
+          'Attached Atmospheric Particle Physics (Rain & Smoke)'
         ];
         onExecuteAgentAction('BUILD_NEO_NOIR');
       } else if (lower.includes('export') || lower.includes('comfy') || lower.includes('payload') || lower.includes('api')) {
-        agentResponseText = "Compiled your active node graph into an executable ComfyUI pipeline and HexCoded API payload. You can open the Export modal to inspect the JSON schema or copy it directly into your render farm.";
+        agentResponseText = "Compiled DAG into an execution pipeline. The JSON payload maps all node token weights, camera motion trajectories, and LoRA references into ComfyUI custom classes and HexCoded's API schema.";
+        dpNotes = "Graph Status: Valid DAG • 7 Nodes • 7 Interconnects • Formats: ComfyUI + HexCoded API";
         actions = [
-          'Validated graph DAG topology',
-          'Serialized 7 nodes and 7 edges',
-          'Generated ComfyUI custom node mappings',
-          'Compiled Director Shot Call Sheet'
+          'Validated Directed Acyclic Graph (DAG) topology',
+          'Calculated token weights & negative safety vectors',
+          'Generated ComfyUI custom node schema',
+          'Compiled Director Call Sheet'
         ];
         onExecuteAgentAction('EXPORT_GRAPH');
       } else {
-        agentResponseText = `Understood. I've analyzed your current scene graph with ${nodes.length} nodes. I've optimized prompt weights, ensured character facial anchors are coherent, and verified that camera lenses follow standard cinematic coverage.`;
+        agentResponseText = `Understood. Analyzing scene coverage across your ${nodes.length} nodes. I've rebalanced prompt token weights (+0.15 key light specular, +0.20 anamorphic flare) and confirmed that camera motion vectors do not introduce disorienting parallax jumps.`;
+        dpNotes = `Scene Token Balance: Optimized • Node Graph: ${nodes.length} Active Rigs • Parallax Status: Smooth`;
         actions = [
           'Analyzed scene graph semantic tokens',
-          'Balanced prompt token weights (+0.15 lighting, +0.20 anamorphic)',
+          'Checked camera vector delta between shots',
           'Verified pipeline execution flow'
         ];
       }
@@ -126,6 +130,7 @@ export function AgenticDirectorChat({
         id: `a-${Date.now()}`,
         sender: 'agent',
         text: agentResponseText,
+        dpNotes,
         actionsTaken: actions,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
@@ -152,7 +157,7 @@ export function AgenticDirectorChat({
         overflow: 'hidden'
       }}
     >
-      {/* Toggle Button on Left Edge */}
+      {/* Toggle Button */}
       <button
         onClick={onToggle}
         className="glass-panel"
@@ -176,7 +181,7 @@ export function AgenticDirectorChat({
         {isOpen ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
       </button>
 
-      {/* Sidebar Header */}
+      {/* Header */}
       <div style={{
         padding: '14px 18px',
         borderBottom: '1px solid var(--border-subtle)',
@@ -190,7 +195,7 @@ export function AgenticDirectorChat({
             width: '26px',
             height: '26px',
             borderRadius: '6px',
-            background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
+            background: 'linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -200,11 +205,11 @@ export function AgenticDirectorChat({
           </div>
           <div>
             <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-primary)' }}>
-              HexAgent Co-Director
+              HexDirector Copilot
             </div>
             <div style={{ fontSize: '10px', color: '#10b981', display: 'flex', alignItems: 'center', gap: '4px' }}>
               <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#10b981' }} />
-              Canvas Live Link Connected
+              Active DP Reasoning Mode
             </div>
           </div>
         </div>
@@ -230,40 +235,60 @@ export function AgenticDirectorChat({
             }}
           >
             <div style={{
-              maxWidth: '90%',
-              padding: '10px 14px',
+              maxWidth: '92%',
+              padding: '12px 14px',
               borderRadius: msg.sender === 'user' ? '12px 12px 2px 12px' : '12px 12px 12px 2px',
               background: msg.sender === 'user' 
                 ? 'linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)' 
-                : 'rgba(26, 32, 48, 0.85)',
+                : 'rgba(24, 29, 44, 0.9)',
               border: msg.sender === 'user' ? 'none' : '1px solid var(--border-subtle)',
               fontSize: '12px',
-              lineHeight: '1.5',
+              lineHeight: '1.6',
               color: '#ffffff',
-              boxShadow: '0 4px 14px rgba(0, 0, 0, 0.3)'
+              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.35)'
             }}>
               {msg.text}
 
-              {/* Action Log if agent performed actions on canvas */}
+              {/* DP Cinematography HUD Tag */}
+              {msg.dpNotes && (
+                <div style={{
+                  marginTop: '8px',
+                  padding: '5px 8px',
+                  background: 'rgba(6, 182, 212, 0.12)',
+                  border: '1px solid rgba(6, 182, 212, 0.3)',
+                  borderRadius: '5px',
+                  fontSize: '10px',
+                  fontFamily: 'var(--font-mono)',
+                  color: '#67e8f9',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '5px'
+                }}>
+                  <Camera size={11} />
+                  <span>{msg.dpNotes}</span>
+                </div>
+              )}
+
+              {/* Action Log */}
               {msg.actionsTaken && msg.actionsTaken.length > 0 && (
                 <div style={{
                   marginTop: '10px',
                   padding: '8px 10px',
-                  background: 'rgba(0, 0, 0, 0.35)',
+                  background: 'rgba(0, 0, 0, 0.4)',
                   borderRadius: '6px',
                   border: '1px solid rgba(255, 255, 255, 0.06)'
                 }}>
                   <div style={{
                     fontSize: '10px',
                     fontFamily: 'var(--font-mono)',
-                    color: '#67e8f9',
+                    color: '#a78bfa',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '4px',
                     marginBottom: '4px'
                   }}>
                     <Terminal size={11} />
-                    <span>CANVAS MUTATIONS EXECUTED:</span>
+                    <span>CANVAS GRAPH MUTATIONS:</span>
                   </div>
                   {msg.actionsTaken.map((act, i) => (
                     <div
@@ -290,12 +315,11 @@ export function AgenticDirectorChat({
           </div>
         ))}
 
-        {/* Thinking Indicator */}
         {isThinking && (
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', width: 'fit-content' }}>
             <Sparkles size={13} className="cable-pulse" color="#8b5cf6" />
             <span style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>
-              Director is reasoning & altering node graph...
+              DP is evaluating coverage & mutating node rigs...
             </span>
           </div>
         )}
@@ -303,14 +327,14 @@ export function AgenticDirectorChat({
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Suggested Quick Prompts */}
+      {/* Suggested Quick Directing Commands */}
       <div style={{
         padding: '8px 14px',
         borderTop: '1px solid var(--border-subtle)',
         background: 'rgba(0, 0, 0, 0.15)'
       }}>
         <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-          Suggested Directing Commands:
+          Cinematic Directing Directives:
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
           {QUICK_DIRECTOR_PROMPTS.slice(0, 3).map((prompt, i) => (
@@ -333,7 +357,7 @@ export function AgenticDirectorChat({
         </div>
       </div>
 
-      {/* Chat Input Field */}
+      {/* Chat Input */}
       <div style={{
         padding: '12px 14px',
         borderTop: '1px solid var(--border-subtle)',
@@ -343,7 +367,7 @@ export function AgenticDirectorChat({
       }}>
         <input
           type="text"
-          placeholder="Ask Director (e.g. 'Switch camera to 85mm anamorphic')..."
+          placeholder="Direct scene (e.g. 'Switch camera to 85mm portrait')..."
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}

@@ -8,6 +8,8 @@ import { ContinuityMatrixModal } from './components/continuity/ContinuityMatrixM
 import { TheaterPreviewModal } from './components/theater/TheaterPreviewModal';
 import { ProductionExportModal } from './components/export/ProductionExportModal';
 import { PitchModal } from './components/pitch/PitchModal';
+import { ProductSpecModal } from './components/prd/ProductSpecModal';
+import { PromptInspectorModal } from './components/inspector/PromptInspectorModal';
 import { INITIAL_TEMPLATES, NODE_TYPES_CONFIG } from './data/mockData';
 
 export function App() {
@@ -27,6 +29,8 @@ export function App() {
   const [showTheaterModal, setShowTheaterModal] = useState(false);
   const [showExportModal, setShowExportModal] = useState(false);
   const [showPitchModal, setShowPitchModal] = useState(false);
+  const [showSpecModal, setShowSpecModal] = useState(false);
+  const [showInspectorModal, setShowInspectorModal] = useState(false);
 
   // Switch Template
   const handleSelectTemplate = (templateId) => {
@@ -80,7 +84,6 @@ export function App() {
 
   const handleConnectEdges = (sourceId, targetId) => {
     const edgeId = `e-${sourceId}-${targetId}`;
-    // Check if edge already exists
     if (edges.some((e) => e.source === sourceId && e.target === targetId)) return;
 
     setEdges((prev) => [
@@ -102,7 +105,6 @@ export function App() {
   // Agent Actions execution
   const handleExecuteAgentAction = (action) => {
     if (action === 'SWITCH_85MM') {
-      // Find camera node and mutate its data
       setNodes((prev) =>
         prev.map((n) => {
           if (n.type === 'camera_optics') {
@@ -122,7 +124,6 @@ export function App() {
         })
       );
     } else if (action === 'LOCK_CONTINUITY') {
-      // Set character anchor weight to 99%
       setNodes((prev) =>
         prev.map((n) => {
           if (n.type === 'character_anchor') {
@@ -138,7 +139,6 @@ export function App() {
         })
       );
     } else if (action === 'ATTACH_MAGNIFIC') {
-      // Add Magnific Enhancer if not present
       if (!nodes.some((n) => n.type === 'magnific_enhancer')) {
         handleAddNode('magnific_enhancer', { x: 1100, y: 140 });
       }
@@ -156,8 +156,8 @@ export function App() {
       setIsRunning(false);
       try {
         confetti({
-          particleCount: 80,
-          spread: 70,
+          particleCount: 90,
+          spread: 80,
           origin: { y: 0.2 },
           colors: ['#8b5cf6', '#06b6d4', '#10b981', '#f59e0b']
         });
@@ -187,6 +187,8 @@ export function App() {
         onOpenExport={() => setShowExportModal(true)}
         onOpenPitch={() => setShowPitchModal(true)}
         onOpenTheater={() => setShowTheaterModal(true)}
+        onOpenSpec={() => setShowSpecModal(true)}
+        onOpenInspector={() => setShowInspectorModal(true)}
       />
 
       {/* Main Studio Workspace: Canvas + Agentic Drawer */}
@@ -230,6 +232,18 @@ export function App() {
       />
 
       {/* Modals */}
+      <ProductSpecModal
+        isOpen={showSpecModal}
+        onClose={() => setShowSpecModal(false)}
+      />
+
+      <PromptInspectorModal
+        isOpen={showInspectorModal}
+        onClose={() => setShowInspectorModal(false)}
+        nodes={nodes}
+        edges={edges}
+      />
+
       <ContinuityMatrixModal
         isOpen={showContinuityModal}
         onClose={() => setShowContinuityModal(false)}
@@ -259,15 +273,15 @@ export function App() {
   );
 }
 
-// Helpers
+// Default Data generator
 function getDefaultDataForType(type) {
   switch (type) {
     case 'script_scene':
       return {
         slugline: 'INT. STAGE STUDIO - NIGHT',
         prompt: 'Cinematic tracking shot through volumetric smoke and warm key light.',
-        mood: 'Dramatic',
-        pacing: '24 FPS'
+        mood: 'Dramatic / Intense',
+        pacing: '24 FPS Standard'
       };
     case 'character_anchor':
       return {
@@ -281,7 +295,7 @@ function getDefaultDataForType(type) {
     case 'camera_optics':
       return {
         focalLength: '35mm Anamorphic T1.9',
-        shotType: 'Medium Close-Up',
+        shotType: 'Medium Close-Up (Profile)',
         cameraMotion: 'Slow Dolly In',
         dof: 'f/1.8 Shallow Focus'
       };
