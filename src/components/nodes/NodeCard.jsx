@@ -1,4 +1,5 @@
 import React from 'react';
+import { CinematicMotionPlayer } from '../video/CinematicMotionPlayer';
 import { 
   NODE_TYPES_CONFIG 
 } from '../../data/mockData';
@@ -484,54 +485,19 @@ export function NodeCard({
           </>
         )}
 
-        {/* Type 7: Master Render Output */}
+        {/* Type 7: Master Render Output with Live Motion Video */}
         {node.type === 'render_output' && (
           <>
-            <div style={{
-              width: '100%',
-              height: '130px',
-              borderRadius: '8px',
-              overflow: 'hidden',
-              position: 'relative',
-              background: '#000000'
-            }}>
-              <img
-                src={node.data.previewImage}
-                alt="Render Preview"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-              <div style={{
-                position: 'absolute',
-                top: '6px',
-                left: '6px',
-                background: 'rgba(0,0,0,0.7)',
-                backdropFilter: 'blur(4px)',
-                borderRadius: '4px',
-                padding: '2px 6px',
-                fontSize: '9px',
-                color: '#10b981',
-                fontWeight: 600,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '4px'
-              }}>
-                <div style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#10b981' }} />
-                SYNTHESIZED
-              </div>
-              <div style={{
-                position: 'absolute',
-                bottom: '6px',
-                right: '6px',
-                background: 'rgba(0,0,0,0.75)',
-                borderRadius: '4px',
-                padding: '2px 6px',
-                fontSize: '9px',
-                color: '#ffffff',
-                fontFamily: 'var(--font-mono)'
-              }}>
-                {node.data.duration}
-              </div>
-            </div>
+            <CinematicMotionPlayer
+              imageSrc={node.data.previewImage}
+              title={node.title}
+              cameraMotion={node.data.cameraMotion || 'Dolly In + Parallax'}
+              focalLength="35mm Cine"
+              height="150px"
+              isPlaying={true}
+              isRendering={isRunning}
+              renderProgress={node.data.renderProgress || 100}
+            />
 
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>Format:</span>

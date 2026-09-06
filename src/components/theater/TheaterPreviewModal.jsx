@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { CinematicMotionPlayer } from '../video/CinematicMotionPlayer';
 import { 
   X, 
   Play, 
@@ -127,17 +128,16 @@ export function TheaterPreviewModal({ isOpen, onClose, shots, activeShotIndex })
             position: 'relative',
             boxShadow: '0 0 100px rgba(0, 0, 0, 0.9), 0 0 30px rgba(139, 92, 246, 0.25)'
           }}>
-            <img
-              src={currentShot.thumbnail}
-              alt={currentShot.name}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                transform: 'scale(1.03)',
-                transition: 'transform 4s ease-out',
-                animation: isPlaying ? 'slowZoom 8s ease-in-out infinite alternate' : 'none'
-              }}
+            <CinematicMotionPlayer
+              imageSrc={currentShot.thumbnail}
+              title={currentShot.name}
+              cameraMotion={currentShot.camera}
+              focalLength={currentShot.focalLength}
+              aspectRatio="2.39/1"
+              height="100%"
+              isPlaying={isPlaying}
+              onTogglePlay={setIsPlaying}
+              showControls={false}
             />
 
             {/* Director HUD Overlays */}
