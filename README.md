@@ -15,7 +15,7 @@
   Built specifically around HexCoded's creative professional users: commercial editors, filmmakers, VFX artists, and agencies.
 </p>
 
-[🚀 Live Interactive Demo (Vercel)](https://ai-generalist-product-roles-at-hex.vercel.app/) • [Product PRD (1-Pager)](./docs/PRD.md) • [System Architecture](./docs/ARCHITECTURE.md) • [Pitch for Jivesh](./PITCH_TO_HEXCODED.md)
+[🚀 Live Interactive Demo (Vercel)](https://ai-generalist-product-roles-at-hex.vercel.app/) • [Product PRD (1-Pager)](./docs/PRD.md) • [System Architecture](./docs/ARCHITECTURE.md)
 
 </div>
 
@@ -183,7 +183,7 @@ Or import directly on [vercel.com/new](https://vercel.com/new).
 
 ---
 
-## 🗺️ Product Roadmap (What I Would Own at HexCoded)
+## 🗺️ Product Roadmap
 
 - [x] **Q1: Core Node Engine & DP Copilot MVP** *(Delivered in this prototype)*
   - 7 specialized filmmaking nodes, active Bezier cables, DP reasoning copilot, and Continuity Matrix.
@@ -196,16 +196,7 @@ Or import directly on [vercel.com/new](https://vercel.com/new).
 
 ---
 
-## 📬 Contact & Outreach
-
-**Candidate:** Krishna Rustagi  
-**Target Role:** AI Product Manager / Product Engineer at HexCoded  
-**Recipient:** Jivesh (`jivesh92` on Discord / `hexcoded@agentmail.to`)  
-**Project Pitch Document:** [PITCH_TO_HEXCODED.md](./PITCH_TO_HEXCODED.md)  
-**Formal PRD:** [docs/PRD.md](./docs/PRD.md)  
-
----
-
 <div align="center">
-  <sub>Built with craft and conviction for the HexCoded team. Distributed under the MIT License.</sub>
+  <sub>Developed by Krishna Rustagi • Distributed under the MIT License.</sub>
 </div>
+

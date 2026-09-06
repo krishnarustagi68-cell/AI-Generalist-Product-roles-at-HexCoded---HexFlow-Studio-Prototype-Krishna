@@ -7,7 +7,6 @@ import { CinematicTimelinePlayer } from './components/timeline/CinematicTimeline
 import { ContinuityMatrixModal } from './components/continuity/ContinuityMatrixModal';
 import { TheaterPreviewModal } from './components/theater/TheaterPreviewModal';
 import { ProductionExportModal } from './components/export/ProductionExportModal';
-import { PitchModal } from './components/pitch/PitchModal';
 import { ProductSpecModal } from './components/prd/ProductSpecModal';
 import { PromptInspectorModal } from './components/inspector/PromptInspectorModal';
 import { INITIAL_TEMPLATES, NODE_TYPES_CONFIG } from './data/mockData';
@@ -28,7 +27,6 @@ export function App() {
   const [showContinuityModal, setShowContinuityModal] = useState(false);
   const [showTheaterModal, setShowTheaterModal] = useState(false);
   const [showExportModal, setShowExportModal] = useState(false);
-  const [showPitchModal, setShowPitchModal] = useState(false);
   const [showSpecModal, setShowSpecModal] = useState(false);
   const [showInspectorModal, setShowInspectorModal] = useState(false);
 
@@ -263,11 +261,6 @@ export function App() {
         nodes={nodes}
         edges={edges}
         templateId={currentTemplateId}
-      />
-
-      <PitchModal
-        isOpen={showPitchModal}
-        onClose={() => setShowPitchModal(false)}
       />
     </div>
   );

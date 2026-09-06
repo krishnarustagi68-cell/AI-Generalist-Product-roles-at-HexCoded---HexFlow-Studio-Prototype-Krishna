@@ -156,22 +156,6 @@ export function Header({
           <span>Export</span>
         </button>
 
-        {/* Pitch to HexCoded for Jivesh */}
-        <button 
-          onClick={onOpenPitch}
-          className="btn-secondary"
-          style={{ 
-            borderColor: 'rgba(255, 255, 255, 0.12)', 
-            background: 'rgba(255, 255, 255, 0.04)',
-            color: '#e2e8f0',
-            padding: '6px 11px',
-            fontSize: '12px'
-          }}
-        >
-          <Sparkles size={14} color="#f59e0b" />
-          <span>Outreach Pitch</span>
-        </button>
-
         {/* Run Pipeline Button */}
         <button 
           onClick={onRunPipeline}
