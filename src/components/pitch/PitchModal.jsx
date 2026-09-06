@@ -22,8 +22,8 @@ export function PitchModal({ isOpen, onClose }) {
 Saw your email regarding opening product roles for HexCoded and built something around your creative professional users:
 
 **HexFlow Studio: Agentic Node Director & Continuity Canvas**
-- Live Demo: [YOUR_DEPLOYED_URL_HERE]
-- GitHub Repo: [YOUR_GITHUB_REPO_URL_HERE]
+- Live Demo: https://ai-generalist-product-roles-at-hex.vercel.app/
+- GitHub Repo: https://github.com/krishnarustagi68-cell/AI-Generalist-Product-roles-at-HexCoded---HexFlow-Studio-Prototype-Krishna
 
 **Why I built this for HexCoded:**
 Filmmakers, editors, and ad agencies love generative AI, but they hate the current tool extremes: either simplistic "prompt-and-pray" textboxes with terrible character drift, or ComfyUI's messy spaghetti wires.

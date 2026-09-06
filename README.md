@@ -15,9 +15,13 @@
   Built specifically around HexCoded's creative professional users: commercial editors, filmmakers, VFX artists, and agencies.
 </p>
 
-[Live Interactive Demo (Vercel)](#-quick-start) • [Product PRD (1-Pager)](./docs/PRD.md) • [Product Pitch for Jivesh](./PITCH_TO_HEXCODED.md) • [Architecture](#-system-architecture)
+[🚀 Live Interactive Demo (Vercel)](https://ai-generalist-product-roles-at-hex.vercel.app/) • [Product PRD (1-Pager)](./docs/PRD.md) • [System Architecture](./docs/ARCHITECTURE.md) • [Pitch for Jivesh](./PITCH_TO_HEXCODED.md)
 
 </div>
+
+> [!TIP]
+> **Live Production Deployment**: Experience HexFlow Studio running live at **[https://ai-generalist-product-roles-at-hex.vercel.app/](https://ai-generalist-product-roles-at-hex.vercel.app/)** with active 24 FPS motion video, real-time DP reasoning copilot, and multi-shot continuity validation.
+
 
 ---
 

@@ -68,8 +68,8 @@ Hi Jivesh,
 Saw your email regarding opening product roles for HexCoded and built something around your creative professional users:
 
 HexFlow Studio: Agentic Node Director & Continuity Canvas
-- Live Demo: [PASTE_YOUR_VERCEL_URL]
-- GitHub: [PASTE_YOUR_GITHUB_URL]
+- Live Demo: https://ai-generalist-product-roles-at-hex.vercel.app/
+- GitHub: https://github.com/krishnarustagi68-cell/AI-Generalist-Product-roles-at-HexCoded---HexFlow-Studio-Prototype-Krishna
 
 Why I built this:
 Filmmakers, editors, and ad agencies love generative AI, but they hate the current tool extremes: either simplistic "prompt-and-pray" textboxes with terrible character drift, or ComfyUI's messy spaghetti wires.
@@ -95,8 +95,8 @@ Hi Jivesh,
 Following up on your invitation for the product roles at HexCoded. Instead of filling out a generic form, I built a working prototype addressing the exact roadmap challenge you mentioned:
 
 HexFlow Studio: Agentic Node Director & Continuity Canvas
-- Live Application: [PASTE_YOUR_VERCEL_URL]
-- GitHub Repository: [PASTE_YOUR_GITHUB_URL]
+- Live Application: https://ai-generalist-product-roles-at-hex.vercel.app/
+- GitHub Repository: https://github.com/krishnarustagi68-cell/AI-Generalist-Product-roles-at-HexCoded---HexFlow-Studio-Prototype-Krishna
 
 HexFlow directly serves your core audience of creative professionals (filmmakers, editors, and agencies) by solving the two biggest hurdles in AI video:
 1. Node-Based Creative Control without ComfyUI's complexity: Clean visual nodes for Scene Storyboards, Character Anchors (Face LoRA Lock), 35mm/85mm Anamorphic Optics, Kodak 500T Color Grading, and Magnific 4K Relighting.
